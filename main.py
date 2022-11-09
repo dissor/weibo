@@ -1,4 +1,5 @@
 import requests
+import json
 
 # url
 url = "https://m.weibo.cn/comments/hotflow?"
@@ -18,4 +19,6 @@ params = {
 
 r = requests.get(url, headers = headers, params = params)
 
-print(r.content.decode('utf8'))
+result = r.content.decode('utf8')
+content = json.loads(result)
+print(content['data']['max_id'])
